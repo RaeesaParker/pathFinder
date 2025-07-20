@@ -1,4 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import { ColorModeProvider } from "@chakra-ui/color-mode";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -9,9 +10,11 @@ import theme from "./theme";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ChakraProvider value={theme}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ColorModeProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ColorModeProvider>
     </ChakraProvider>
   </StrictMode>
 );

@@ -1,3 +1,4 @@
+import { useColorMode } from "@chakra-ui/color-mode";
 import {
   Box,
   Button,
@@ -6,7 +7,7 @@ import {
   Heading,
   IconButton,
 } from "@chakra-ui/react";
-import { Moon, Target } from "lucide-react";
+import { Moon, Sun, Target } from "lucide-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -20,13 +21,14 @@ const Header: React.FC<HeaderProps> = ({
   showStartOver = false,
 }) => {
   const navigate = useNavigate();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <Box
-      bg="bg.secondary"
+      bg={colorMode === "light" ? "white" : "customGray.800"}
       boxShadow="sm"
       borderBottom="1px"
-      borderColor="border.primary"
+      borderColor={colorMode === "light" ? "customGray.300" : "customGray.600"}
     >
       <Container maxW="7xl" py={6}>
         <Flex justify="space-between" align="center">
@@ -34,8 +36,8 @@ const Header: React.FC<HeaderProps> = ({
             align="center"
             cursor="pointer"
             onClick={() => navigate("/")}
-            color="text.secondary"
-            _hover={{ color: "text.brand" }}
+            color={colorMode === "light" ? "customGray.600" : "customGray.300"}
+            _hover={{ color: "brand.600" }}
             gap={2}
           >
             <Target size={32} />
@@ -43,7 +45,7 @@ const Header: React.FC<HeaderProps> = ({
               as="h1"
               fontSize="2xl"
               fontWeight="bold"
-              color="text.primary"
+              color={colorMode === "light" ? "customGray.900" : "white"}
             >
               PathFinder
             </Heading>
@@ -54,8 +56,16 @@ const Header: React.FC<HeaderProps> = ({
               aria-label="Toggle color mode"
               variant="ghost"
               size="sm"
+              onClick={toggleColorMode}
+              color={
+                colorMode === "light" ? "customGray.600" : "customGray.300"
+              }
+              _hover={{
+                color: "brand.600",
+                bg: colorMode === "light" ? "brand.100" : "brand.900",
+              }}
             >
-              <Moon size={20} />
+              {colorMode === "light" ? <Moon size={20} /> : <Sun size={20} />}
             </IconButton>
 
             {showGetStarted && (
@@ -74,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({
               <Button
                 variant="ghost"
                 onClick={() => navigate("/form")}
-                color="text.brand"
+                color="brand.600"
                 _hover={{ color: "brand.700" }}
               >
                 Start Over

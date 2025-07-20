@@ -1,3 +1,4 @@
+import { useColorMode } from "@chakra-ui/color-mode";
 import {
   Box,
   Button,
@@ -27,12 +28,14 @@ interface FormData {
 
 const Form: React.FC = () => {
   const navigate = useNavigate();
+  const { colorMode } = useColorMode();
   const [formData, setFormData] = useState<FormData>({
     degree: "",
     modules: [],
     interests: [],
     goals: "",
   });
+
   const [currentModule, setCurrentModule] = useState("");
   const [currentInterest, setCurrentInterest] = useState("");
 
@@ -96,21 +99,37 @@ const Form: React.FC = () => {
   };
 
   return (
-    <Box bg="bg.primary" minH="100vh">
+    <Box
+      bg={colorMode === "light" ? "customGray.50" : "customGray.900"}
+      minH="100vh"
+    >
       <Header />
 
-      <Container maxW="3xl" py={12}>
-        <Box textAlign="center" mb={10}>
+      <Container maxW="container.xl" py={8}>
+        <Box
+          bg={colorMode === "light" ? "white" : "customGray.800"}
+          borderRadius="lg"
+          boxShadow="sm"
+          border="1px"
+          borderColor={
+            colorMode === "light" ? "customGray.300" : "customGray.600"
+          }
+          p={8}
+          mb={8}
+        >
           <Heading
             as="h2"
             fontSize="3xl"
             fontWeight="bold"
             mb={4}
-            color="text.primary"
+            color={colorMode === "light" ? "customGray.900" : "customGray.50"}
           >
             Tell us about yourself
           </Heading>
-          <Text color="text.secondary" fontSize="lg">
+          <Text
+            color={colorMode === "light" ? "customGray.700" : "customGray.300"}
+            fontSize="lg"
+          >
             The more we know about your studies and interests, the better we can
             help you discover your path.
           </Text>
@@ -121,20 +140,24 @@ const Form: React.FC = () => {
             {/* Degree Input */}
             <Box
               w="full"
-              bg="bg.secondary"
+              bg={colorMode === "light" ? "white" : "customGray.800"}
               borderRadius="lg"
               boxShadow="sm"
               border="1px"
-              borderColor="border.primary"
+              borderColor={
+                colorMode === "light" ? "customGray.300" : "customGray.600"
+              }
               p={8}
             >
               <Flex align="center" mb={6} gap={3}>
-                <Icon as={BookOpen} w={6} h={6} color="text.brand" />
+                <Icon as={BookOpen} w={6} h={6} color="brand.600" />
                 <Heading
                   as="h3"
                   fontSize="xl"
                   fontWeight="semibold"
-                  color="text.primary"
+                  color={
+                    colorMode === "light" ? "customGray.900" : "customGray.50"
+                  }
                 >
                   What's your degree or field of study?
                 </Heading>
@@ -146,12 +169,19 @@ const Form: React.FC = () => {
                 }
                 placeholder="e.g., Computer Science, Business Administration, Psychology..."
                 size="lg"
-                bg="bg.secondary"
-                borderColor="border.primary"
-                color="text.primary"
-                _placeholder={{ color: "text.muted" }}
+                bg={colorMode === "light" ? "white" : "customGray.800"}
+                borderColor={
+                  colorMode === "light" ? "customGray.300" : "customGray.600"
+                }
+                color={
+                  colorMode === "light" ? "customGray.900" : "customGray.50"
+                }
+                _placeholder={{
+                  color:
+                    colorMode === "light" ? "customGray.500" : "customGray.400",
+                }}
                 _focus={{
-                  borderColor: "border.focus",
+                  borderColor: "brand.600",
                   boxShadow: "0 0 0 1px var(--chakra-colors-brand-600)",
                 }}
                 required
@@ -161,20 +191,24 @@ const Form: React.FC = () => {
             {/* Modules Input */}
             <Box
               w="full"
-              bg="bg.secondary"
+              bg={colorMode === "light" ? "white" : "customGray.800"}
               borderRadius="lg"
               boxShadow="sm"
               border="1px"
-              borderColor="border.primary"
+              borderColor={
+                colorMode === "light" ? "customGray.300" : "customGray.600"
+              }
               p={8}
             >
               <Flex align="center" mb={6} gap={3}>
-                <Icon as={Target} w={6} h={6} color="text.brand" />
+                <Icon as={Target} w={6} h={6} color="brand.600" />
                 <Heading
                   as="h3"
                   fontSize="xl"
                   fontWeight="semibold"
-                  color="text.primary"
+                  color={
+                    colorMode === "light" ? "customGray.900" : "customGray.50"
+                  }
                 >
                   Which modules or topics have you enjoyed?
                 </Heading>
@@ -185,12 +219,21 @@ const Form: React.FC = () => {
                   onChange={(e) => setCurrentModule(e.target.value)}
                   placeholder="e.g., Data Structures, Marketing Strategy, Creative Writing..."
                   flex={1}
-                  bg="bg.secondary"
-                  borderColor="border.primary"
-                  color="text.primary"
-                  _placeholder={{ color: "text.muted" }}
+                  bg={colorMode === "light" ? "white" : "customGray.800"}
+                  borderColor={
+                    colorMode === "light" ? "customGray.300" : "customGray.600"
+                  }
+                  color={
+                    colorMode === "light" ? "customGray.900" : "customGray.50"
+                  }
+                  _placeholder={{
+                    color:
+                      colorMode === "light"
+                        ? "customGray.500"
+                        : "customGray.400",
+                  }}
                   _focus={{
-                    borderColor: "border.focus",
+                    borderColor: "brand.600",
                     boxShadow: "0 0 0 1px var(--chakra-colors-brand-600)",
                   }}
                   onKeyPress={(e) => handleKeyPress(e, addModule)}
@@ -209,8 +252,8 @@ const Form: React.FC = () => {
                 {formData.modules.map((module) => (
                   <Box
                     key={module}
-                    bg="bg.accent"
-                    color="text.brand"
+                    bg={colorMode === "light" ? "brand.50" : "brand.900"}
+                    color="brand.600"
                     borderRadius="full"
                     px={3}
                     py={2}
@@ -232,20 +275,24 @@ const Form: React.FC = () => {
             {/* Interests Input */}
             <Box
               w="full"
-              bg="bg.secondary"
+              bg={colorMode === "light" ? "white" : "customGray.800"}
               borderRadius="lg"
               boxShadow="sm"
               border="1px"
-              borderColor="border.primary"
+              borderColor={
+                colorMode === "light" ? "customGray.300" : "customGray.600"
+              }
               p={8}
             >
               <Flex align="center" mb={6} gap={3}>
-                <Icon as={Heart} w={6} h={6} color="text.brand" />
+                <Icon as={Heart} w={6} h={6} color="brand.600" />
                 <Heading
                   as="h3"
                   fontSize="xl"
                   fontWeight="semibold"
-                  color="text.primary"
+                  color={
+                    colorMode === "light" ? "customGray.900" : "customGray.50"
+                  }
                 >
                   What are your hobbies and interests?
                 </Heading>
@@ -256,12 +303,21 @@ const Form: React.FC = () => {
                   onChange={(e) => setCurrentInterest(e.target.value)}
                   placeholder="e.g., Photography, Volunteer work, Gaming..."
                   flex={1}
-                  bg="bg.secondary"
-                  borderColor="border.primary"
-                  color="text.primary"
-                  _placeholder={{ color: "text.muted" }}
+                  bg={colorMode === "light" ? "white" : "customGray.800"}
+                  borderColor={
+                    colorMode === "light" ? "customGray.300" : "customGray.600"
+                  }
+                  color={
+                    colorMode === "light" ? "customGray.900" : "customGray.50"
+                  }
+                  _placeholder={{
+                    color:
+                      colorMode === "light"
+                        ? "customGray.500"
+                        : "customGray.400",
+                  }}
                   _focus={{
-                    borderColor: "border.focus",
+                    borderColor: "brand.600",
                     boxShadow: "0 0 0 1px var(--chakra-colors-brand-600)",
                   }}
                   onKeyPress={(e) => handleKeyPress(e, addInterest)}
@@ -280,8 +336,8 @@ const Form: React.FC = () => {
                 {formData.interests.map((interest) => (
                   <Box
                     key={interest}
-                    bg="bg.accent"
-                    color="text.brand"
+                    bg={colorMode === "light" ? "brand.50" : "brand.900"}
+                    color="brand.600"
                     borderRadius="full"
                     px={3}
                     py={2}
@@ -303,20 +359,24 @@ const Form: React.FC = () => {
             {/* Goals Input */}
             <Box
               w="full"
-              bg="bg.secondary"
+              bg={colorMode === "light" ? "white" : "customGray.800"}
               borderRadius="lg"
               boxShadow="sm"
               border="1px"
-              borderColor="border.primary"
+              borderColor={
+                colorMode === "light" ? "customGray.300" : "customGray.600"
+              }
               p={8}
             >
               <Flex align="center" mb={6} gap={3}>
-                <Icon as={TrendingUp} w={6} h={6} color="text.brand" />
+                <Icon as={TrendingUp} w={6} h={6} color="brand.600" />
                 <Heading
                   as="h3"
                   fontSize="xl"
                   fontWeight="semibold"
-                  color="text.primary"
+                  color={
+                    colorMode === "light" ? "customGray.900" : "customGray.50"
+                  }
                 >
                   Any specific career goals or dreams?
                 </Heading>
@@ -329,12 +389,19 @@ const Form: React.FC = () => {
                 placeholder="e.g., I want to make a positive impact, work with cutting-edge technology, or be my own boss..."
                 rows={3}
                 resize="none"
-                bg="bg.secondary"
-                borderColor="border.primary"
-                color="text.primary"
-                _placeholder={{ color: "text.muted" }}
+                bg={colorMode === "light" ? "white" : "customGray.800"}
+                borderColor={
+                  colorMode === "light" ? "customGray.300" : "customGray.600"
+                }
+                color={
+                  colorMode === "light" ? "customGray.900" : "customGray.50"
+                }
+                _placeholder={{
+                  color:
+                    colorMode === "light" ? "customGray.500" : "customGray.400",
+                }}
                 _focus={{
-                  borderColor: "border.focus",
+                  borderColor: "brand.600",
                   boxShadow: "0 0 0 1px var(--chakra-colors-brand-600)",
                 }}
               />
@@ -355,7 +422,12 @@ const Form: React.FC = () => {
               fontSize="lg"
               fontWeight="semibold"
               _hover={{ bg: "brand.700" }}
-              _disabled={{ bg: "gray.300", cursor: "not-allowed" }}
+              _disabled={{
+                bg: colorMode === "light" ? "customGray.300" : "customGray.600",
+                color:
+                  colorMode === "light" ? "customGray.500" : "customGray.400",
+                cursor: "not-allowed",
+              }}
             >
               <Flex align="center" gap={2}>
                 <Text>Discover My Path</Text>

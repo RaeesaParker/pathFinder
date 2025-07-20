@@ -8,6 +8,7 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/color-mode";
 import { ArrowRight, Lightbulb, TrendingUp, User } from "lucide-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,9 +17,13 @@ import Header from "../components/Header";
 
 const Landing: React.FC = () => {
   const navigate = useNavigate();
+  const { colorMode } = useColorMode();
 
   return (
-    <Box bg="bg.primary" minH="100vh">
+    <Box
+      bg={colorMode === "light" ? "customGray.50" : "customGray.900"}
+      minH="100vh"
+    >
       <Header showGetStarted />
 
       {/* Hero Section */}
@@ -29,11 +34,11 @@ const Landing: React.FC = () => {
             size={{ base: "3xl", md: "5xl" }}
             fontWeight="bold"
             mb={6}
-            color="text.primary"
+            color={colorMode === "light" ? "customGray.900" : "white"}
             lineHeight="1.1"
           >
             Not sure where your degree will take you?{" "}
-            <Text as="span" color="text.brand">
+            <Text as="span" color="brand.600">
               Let's find out.
             </Text>
           </Heading>
@@ -43,7 +48,7 @@ const Landing: React.FC = () => {
             mb={8}
             maxW="3xl"
             mx="auto"
-            color="text.secondary"
+            color={colorMode === "light" ? "customGray.600" : "customGray.300"}
             lineHeight="1.6"
           >
             Discover personalized career paths based on your studies, interests,
@@ -81,9 +86,16 @@ const Landing: React.FC = () => {
               fontSize="lg"
               fontWeight="semibold"
               borderWidth={2}
-              borderColor="border.primary"
-              color="text.secondary"
-              _hover={{ borderColor: "brand.600", color: "text.primary" }}
+              borderColor={
+                colorMode === "light" ? "customGray.300" : "customGray.600"
+              }
+              color={
+                colorMode === "light" ? "customGray.600" : "customGray.300"
+              }
+              _hover={{
+                borderColor: "brand.600",
+                color: colorMode === "light" ? "customGray.900" : "white",
+              }}
             >
               See How It Works
             </Button>
@@ -92,7 +104,7 @@ const Landing: React.FC = () => {
       </Container>
 
       {/* Features Section */}
-      <Box bg="bg.secondary" py={20}>
+      <Box bg={colorMode === "light" ? "white" : "customGray.800"} py={20}>
         <Container maxW="7xl">
           <SimpleGrid columns={{ base: 1, md: 3 }} gap={8}>
             <Box textAlign="center">
@@ -104,20 +116,25 @@ const Landing: React.FC = () => {
                 align="center"
                 justify="center"
                 borderRadius="full"
-                bg="bg.accent"
+                bg={colorMode === "light" ? "brand.100" : "brand.900"}
               >
-                <Icon as={User} w={8} h={8} color="text.brand" />
+                <Icon as={User} w={8} h={8} color="brand.600" />
               </Flex>
               <Heading
                 as="h3"
                 fontSize="xl"
                 fontWeight="semibold"
                 mb={3}
-                color="text.primary"
+                color={colorMode === "light" ? "customGray.900" : "white"}
               >
                 Personalized Analysis
               </Heading>
-              <Text color="text.secondary" lineHeight="1.6">
+              <Text
+                color={
+                  colorMode === "light" ? "customGray.600" : "customGray.300"
+                }
+                lineHeight="1.6"
+              >
                 Tell us about your degree, favorite modules, and interests to
                 get insights tailored specifically to you.
               </Text>
@@ -132,20 +149,25 @@ const Landing: React.FC = () => {
                 align="center"
                 justify="center"
                 borderRadius="full"
-                bg="bg.accent"
+                bg={colorMode === "light" ? "brand.100" : "brand.900"}
               >
-                <Icon as={Lightbulb} w={8} h={8} color="text.brand" />
+                <Icon as={Lightbulb} w={8} h={8} color="brand.600" />
               </Flex>
               <Heading
                 as="h3"
                 fontSize="xl"
                 fontWeight="semibold"
                 mb={3}
-                color="text.primary"
+                color={colorMode === "light" ? "customGray.900" : "white"}
               >
                 Skills Discovery
               </Heading>
-              <Text color="text.secondary" lineHeight="1.6">
+              <Text
+                color={
+                  colorMode === "light" ? "customGray.600" : "customGray.300"
+                }
+                lineHeight="1.6"
+              >
                 Uncover your transferable skills, technical abilities, and
                 unique strengths you might not have realized.
               </Text>
@@ -160,20 +182,25 @@ const Landing: React.FC = () => {
                 align="center"
                 justify="center"
                 borderRadius="full"
-                bg="bg.accent"
+                bg={colorMode === "light" ? "brand.100" : "brand.900"}
               >
-                <Icon as={TrendingUp} w={8} h={8} color="text.brand" />
+                <Icon as={TrendingUp} w={8} h={8} color="brand.600" />
               </Flex>
               <Heading
                 as="h3"
                 fontSize="xl"
                 fontWeight="semibold"
                 mb={3}
-                color="text.primary"
+                color={colorMode === "light" ? "customGray.900" : "white"}
               >
                 Career Roadmap
               </Heading>
-              <Text color="text.secondary" lineHeight="1.6">
+              <Text
+                color={
+                  colorMode === "light" ? "customGray.600" : "customGray.300"
+                }
+                lineHeight="1.6"
+              >
                 Get specific career paths with actionable next steps and
                 encouragement to help you move forward.
               </Text>

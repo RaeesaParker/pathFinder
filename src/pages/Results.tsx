@@ -9,6 +9,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/color-mode";
 import { User } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -36,8 +37,9 @@ interface CareerInsight {
 }
 
 const Results: React.FC = () => {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
+  const { colorMode } = useColorMode();
   const [insights, setInsights] = useState<CareerInsight | null>(null);
 
   useEffect(() => {
@@ -228,50 +230,63 @@ const Results: React.FC = () => {
   }
 
   return (
-    <Box bg="bg.primary" minH="100vh">
+    <Box
+      bg={colorMode === "light" ? "customGray.50" : "customGray.900"}
+      minH="100vh"
+    >
       <Header showStartOver />
 
       <Container maxW="6xl" py={12}>
         <Box textAlign="center" mb={12}>
           <Heading
-            as="h2"
-            fontSize="4xl"
+            as="h1"
+            size="2xl"
             fontWeight="bold"
-            mb={4}
-            color="text.primary"
+            textAlign="center"
+            mb={2}
+            color={colorMode === "light" ? "customGray.900" : "white"}
           >
             Your Career{" "}
-            <Text as="span" color="text.brand">
+            <Text as="span" color="brand.600">
               Insights
             </Text>
           </Heading>
-          <Text fontSize="xl" color="text.secondary">
+          <Text
+            fontSize="xl"
+            color={colorMode === "light" ? "customGray.600" : "customGray.300"}
+          >
             Based on your unique background and interests
           </Text>
         </Box>
 
         {/* Summary */}
         <Box
-          bg="bg.secondary"
+          bg={colorMode === "light" ? "white" : "customGray.800"}
           borderRadius="lg"
           p={8}
           boxShadow="sm"
           mb={8}
           border="1px"
-          borderColor="border.primary"
+          borderColor={
+            colorMode === "light" ? "customGray.300" : "customGray.600"
+          }
         >
           <Flex align="center" mb={4} gap={2}>
-            <Icon as={User} w={6} h={6} color="text.brand" />
+            <Icon as={User} w={6} h={6} color="brand.600" />
             <Heading
               as="h3"
               fontSize="2xl"
               fontWeight="semibold"
-              color="text.primary"
+              color={colorMode === "light" ? "customGray.900" : "white"}
             >
               Your Learning Journey
             </Heading>
           </Flex>
-          <Text fontSize="lg" lineHeight="1.6" color="text.secondary">
+          <Text
+            fontSize="lg"
+            lineHeight="1.6"
+            color={colorMode === "light" ? "customGray.700" : "customGray.300"}
+          >
             {insights.summary}
           </Text>
         </Box>
@@ -279,25 +294,32 @@ const Results: React.FC = () => {
         {/* Skills */}
         <SimpleGrid columns={{ base: 1, md: 3 }} gap={6} mb={8}>
           <Box
-            bg="bg.secondary"
+            bg={colorMode === "light" ? "white" : "customGray.800"}
             borderRadius="lg"
             p={6}
             boxShadow="sm"
             border="1px"
-            borderColor="border.primary"
+            borderColor={
+              colorMode === "light" ? "customGray.300" : "customGray.600"
+            }
           >
             <Heading
               as="h4"
               fontSize="lg"
               fontWeight="semibold"
               mb={4}
-              color="text.brand"
+              color="brand.600"
             >
               Transferable Skills
             </Heading>
             <VStack align="start" gap={2}>
               {insights.transferableSkills.map((skill, index) => (
-                <Text key={index} color="text.secondary">
+                <Text
+                  key={index}
+                  color={
+                    colorMode === "light" ? "customGray.700" : "customGray.300"
+                  }
+                >
                   • {skill}
                 </Text>
               ))}
@@ -305,25 +327,32 @@ const Results: React.FC = () => {
           </Box>
 
           <Box
-            bg="bg.secondary"
+            bg={colorMode === "light" ? "white" : "customGray.800"}
             borderRadius="lg"
             p={6}
             boxShadow="sm"
             border="1px"
-            borderColor="border.primary"
+            borderColor={
+              colorMode === "light" ? "customGray.300" : "customGray.600"
+            }
           >
             <Heading
               as="h4"
               fontSize="lg"
               fontWeight="semibold"
               mb={4}
-              color="text.brand"
+              color="brand.600"
             >
               Technical Skills
             </Heading>
             <VStack align="start" gap={2}>
               {insights.technicalSkills.map((skill, index) => (
-                <Text key={index} color="text.secondary">
+                <Text
+                  key={index}
+                  color={
+                    colorMode === "light" ? "customGray.700" : "customGray.300"
+                  }
+                >
                   • {skill}
                 </Text>
               ))}
@@ -331,25 +360,32 @@ const Results: React.FC = () => {
           </Box>
 
           <Box
-            bg="bg.secondary"
+            bg={colorMode === "light" ? "white" : "customGray.800"}
             borderRadius="lg"
             p={6}
             boxShadow="sm"
             border="1px"
-            borderColor="border.primary"
+            borderColor={
+              colorMode === "light" ? "customGray.300" : "customGray.600"
+            }
           >
             <Heading
               as="h4"
               fontSize="lg"
               fontWeight="semibold"
               mb={4}
-              color="text.brand"
+              color="brand.600"
             >
               Interest-Based Skills
             </Heading>
             <VStack align="start" gap={2}>
               {insights.interestSkills.map((skill, index) => (
-                <Text key={index} color="text.secondary">
+                <Text
+                  key={index}
+                  color={
+                    colorMode === "light" ? "customGray.700" : "customGray.300"
+                  }
+                >
                   • {skill}
                 </Text>
               ))}
@@ -365,10 +401,10 @@ const Results: React.FC = () => {
             fontWeight="semibold"
             textAlign="center"
             mb={8}
-            color="text.primary"
+            color={colorMode === "light" ? "customGray.900" : "white"}
           >
             Career Paths{" "}
-            <Text as="span" color="text.brand">
+            <Text as="span" color="brand.600">
               Just for You
             </Text>
           </Heading>
@@ -376,27 +412,31 @@ const Results: React.FC = () => {
           {insights.careerPaths.map((path, index) => (
             <Box
               key={index}
-              bg="bg.secondary"
+              bg={colorMode === "light" ? "white" : "customGray.800"}
               borderRadius="lg"
               p={8}
               boxShadow="sm"
               w="full"
               border="1px"
-              borderColor="border.primary"
+              borderColor={
+                colorMode === "light" ? "customGray.300" : "customGray.600"
+              }
             >
               <Heading
                 as="h4"
                 fontSize="2xl"
                 fontWeight="bold"
                 mb={3}
-                color="text.brand"
+                color="brand.600"
               >
                 {path.title}
               </Heading>
               <Text
                 fontSize="lg"
                 mb={6}
-                color="text.secondary"
+                color={
+                  colorMode === "light" ? "customGray.700" : "customGray.300"
+                }
                 lineHeight="1.6"
               >
                 {path.description}
@@ -408,7 +448,7 @@ const Results: React.FC = () => {
                   fontSize="lg"
                   fontWeight="semibold"
                   mb={3}
-                  color="text.primary"
+                  color={colorMode === "light" ? "customGray.900" : "white"}
                 >
                   Next Steps:
                 </Heading>
@@ -418,9 +458,13 @@ const Results: React.FC = () => {
                       key={stepIndex}
                       align="flex-start"
                       gap={2}
-                      color="text.secondary"
+                      color={
+                        colorMode === "light"
+                          ? "customGray.700"
+                          : "customGray.300"
+                      }
                     >
-                      <Text color="text.brand" fontWeight="bold">
+                      <Text color="brand.600" fontWeight="bold">
                         •
                       </Text>
                       <Text>{step}</Text>
@@ -429,8 +473,12 @@ const Results: React.FC = () => {
                 </VStack>
               </Box>
 
-              <Box bg="bg.accent" p={4} borderRadius="lg">
-                <Text fontWeight="medium" fontStyle="italic" color="text.brand">
+              <Box
+                bg={colorMode === "light" ? "brand.50" : "brand.900"}
+                p={4}
+                borderRadius="lg"
+              >
+                <Text fontWeight="medium" fontStyle="italic" color="brand.600">
                   💡 {path.encouragement}
                 </Text>
               </Box>
