@@ -1,3 +1,5 @@
+import { useColorMode } from "@chakra-ui/color-mode";
+import { useDisclosure } from "@chakra-ui/hooks";
 import {
   Box,
   Button,
@@ -8,16 +10,21 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
-import { useColorMode } from "@chakra-ui/color-mode";
 import { ArrowRight, Lightbulb, TrendingUp, User } from "lucide-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../components/Header";
+import HowItWorksModal from "../components/HowItWorksModal";
 
 const Landing: React.FC = () => {
   const navigate = useNavigate();
   const { colorMode } = useColorMode();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleGetStarted = () => {
+    navigate("/form");
+  };
 
   return (
     <Box
@@ -71,7 +78,7 @@ const Landing: React.FC = () => {
               fontSize="lg"
               fontWeight="semibold"
               _hover={{ bg: "brand.700" }}
-              onClick={() => navigate("/form")}
+              onClick={handleGetStarted}
             >
               <Flex align="center" gap={2}>
                 <Text>Explore Careers</Text>
@@ -94,8 +101,10 @@ const Landing: React.FC = () => {
               }
               _hover={{
                 borderColor: "brand.600",
-                color: colorMode === "light" ? "customGray.900" : "white",
+                color:
+                  colorMode === "light" ? "customGray.900" : "customGray.600",
               }}
+              onClick={onOpen}
             >
               See How It Works
             </Button>
@@ -208,6 +217,12 @@ const Landing: React.FC = () => {
           </SimpleGrid>
         </Container>
       </Box>
+
+      <HowItWorksModal
+        isOpen={isOpen}
+        onClose={onClose}
+        onGetStarted={handleGetStarted}
+      />
     </Box>
   );
 };
