@@ -1,3 +1,4 @@
+import { useColorMode } from "@chakra-ui/color-mode";
 import {
   Box,
   Button,
@@ -9,12 +10,12 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { useColorMode } from "@chakra-ui/color-mode";
 import { User } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Header from "../components/Header";
+import { generateCareerInsights } from "../utils/generateCareerPrompt";
 
 interface FormData {
   degree: string;
@@ -41,6 +42,8 @@ const Results: React.FC = () => {
   const location = useLocation();
   const { colorMode } = useColorMode();
   const [insights, setInsights] = useState<CareerInsight | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const formData = location.state?.formData as FormData;
@@ -50,39 +53,52 @@ const Results: React.FC = () => {
       return;
     }
 
-    const generateInsights = (data: FormData): CareerInsight => {
-      const degreeField = data.degree.toLowerCase();
-      const hasSTEM =
-        degreeField.includes("computer") ||
-        degreeField.includes("engineering") ||
-        degreeField.includes("science") ||
-        degreeField.includes("math");
-      const hasBusiness =
-        degreeField.includes("business") ||
-        degreeField.includes("economics") ||
-        degreeField.includes("finance");
-      const hasArts =
-        degreeField.includes("art") ||
-        degreeField.includes("design") ||
-        degreeField.includes("english") ||
-        degreeField.includes("history");
+    const fetchCareerInsights = async () => {
+      setLoading(true);
+      setError(null);
 
-      const baseTransferableSkills = [
-        "Critical thinking",
-        "Problem-solving",
-        "Communication",
-        "Time management",
-      ];
-      const baseTechnicalSkills = hasSTEM
-        ? ["Data analysis", "Research methodology", "Technical writing"]
-        : hasBusiness
-        ? ["Market analysis", "Financial modeling", "Project management"]
-        : hasArts
-        ? ["Creative thinking", "Research skills", "Content creation"]
-        : ["Research methodology", "Analytical thinking", "Writing"];
+      try {
+        const insights = await generateCareerInsights(formData);
+        setInsights(insights);
+      } catch (err) {
+        console.error("Error generating career insights:", err);
+        setError(
+          err instanceof Error
+            ? err.message
+            : "Failed to generate career insights"
+        );
 
-      const careerPaths = hasSTEM
-        ? [
+        // Fallback to placeholder data in case of error
+        const placeholderInsights: CareerInsight = {
+          summary: `Based on your ${
+            formData.degree
+          } background and interests in ${formData.modules.join(
+            ", "
+          )}, you've developed a unique combination of analytical and creative skills. Your passion for ${formData.interests.join(
+            " and "
+          )} shows you're someone who thinks both strategically and empathetically.`,
+          transferableSkills: [
+            "Critical thinking",
+            "Problem-solving",
+            "Communication",
+            "Time management",
+            "Leadership",
+            "Collaboration",
+            "Adaptability",
+          ],
+          technicalSkills: [
+            "Data analysis",
+            "Research methodology",
+            "Technical writing",
+            "Project management",
+          ],
+          interestSkills: formData.interests.map(
+            (interest) =>
+              `${
+                interest.charAt(0).toUpperCase() + interest.slice(1)
+              } knowledge`
+          ),
+          careerPaths: [
             {
               title: "Product Manager",
               description:
@@ -119,47 +135,6 @@ const Results: React.FC = () => {
               encouragement:
                 "Your logical thinking combined with creativity can create truly innovative user experiences.",
             },
-          ]
-        : hasBusiness
-        ? [
-            {
-              title: "Management Consultant",
-              description:
-                "Help organizations solve complex business challenges and improve performance.",
-              nextSteps: [
-                "Develop case study analysis skills",
-                "Network with consulting professionals",
-                "Practice business presentation skills",
-              ],
-              encouragement:
-                "Your business acumen and analytical skills are perfect for tackling diverse business challenges.",
-            },
-            {
-              title: "Marketing Manager",
-              description:
-                "Create compelling campaigns that connect brands with their target audiences.",
-              nextSteps: [
-                "Learn digital marketing tools",
-                "Build a personal brand online",
-                "Study successful marketing campaigns",
-              ],
-              encouragement:
-                "Your understanding of market dynamics gives you a solid foundation for creative marketing strategies.",
-            },
-            {
-              title: "Startup Founder",
-              description:
-                "Turn innovative ideas into successful businesses that make a real impact.",
-              nextSteps: [
-                "Identify a problem to solve",
-                "Build a minimum viable product",
-                "Connect with other entrepreneurs",
-              ],
-              encouragement:
-                "Your business knowledge combined with your passion gives you the tools to build something meaningful.",
-            },
-          ]
-        : [
             {
               title: "Content Strategist",
               description:
@@ -173,57 +148,54 @@ const Results: React.FC = () => {
                 "Your communication skills and creative thinking are exactly what brands need to connect with audiences.",
             },
             {
-              title: "Social Impact Coordinator",
+              title: "Innovation Consultant",
               description:
-                "Work with organizations to create positive change in communities.",
+                "Help organizations embrace new technologies and transform their business models.",
               nextSteps: [
-                "Volunteer with local nonprofits",
-                "Learn about social impact measurement",
-                "Network with mission-driven organizations",
+                "Study emerging technology trends",
+                "Develop change management skills",
+                "Network with innovation professionals",
               ],
               encouragement:
-                "Your passion for making a difference can create meaningful career opportunities in the social sector.",
+                "Your diverse background positions you perfectly to bridge traditional business with cutting-edge innovation.",
             },
-            {
-              title: "Project Manager",
-              description:
-                "Lead teams and coordinate complex projects from start to finish.",
-              nextSteps: [
-                "Get certified in project management",
-                "Practice leading team projects",
-                "Learn project management software",
-              ],
-              encouragement:
-                "Your organizational skills and attention to detail are valuable in any industry.",
-            },
-          ];
-
-      return {
-        summary: `Based on your ${
-          data.degree
-        } background and interests in ${data.modules.join(
-          ", "
-        )}, you've developed a unique combination of analytical and creative skills. Your passion for ${data.interests.join(
-          " and "
-        )} shows you're someone who thinks both strategically and empathetically.`,
-        transferableSkills: [
-          ...baseTransferableSkills,
-          "Leadership",
-          "Collaboration",
-          "Adaptability",
-        ],
-        technicalSkills: baseTechnicalSkills,
-        interestSkills: data.interests.map(
-          (interest) =>
-            `${interest.charAt(0).toUpperCase() + interest.slice(1)} knowledge`
-        ),
-        careerPaths: careerPaths,
-      };
+          ],
+        };
+        setInsights(placeholderInsights);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    const generatedInsights = generateInsights(formData);
-    setInsights(generatedInsights);
+    fetchCareerInsights();
   }, [location.state, navigate]);
+
+  if (loading) {
+    return (
+      <Box
+        bg={colorMode === "light" ? "customGray.50" : "customGray.900"}
+        minH="100vh"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <VStack gap={4}>
+          <Text
+            fontSize="xl"
+            color={colorMode === "light" ? "customGray.700" : "customGray.300"}
+          >
+            Generating your personalized career insights...
+          </Text>
+          <Text
+            fontSize="md"
+            color={colorMode === "light" ? "customGray.500" : "customGray.400"}
+          >
+            This may take a few moments
+          </Text>
+        </VStack>
+      </Box>
+    );
+  }
 
   if (!insights) {
     return null;
@@ -257,6 +229,20 @@ const Results: React.FC = () => {
           >
             Based on your unique background and interests
           </Text>
+          {error && (
+            <Box
+              mt={4}
+              p={4}
+              bg="red.50"
+              borderColor="red.200"
+              borderWidth="1px"
+              borderRadius="md"
+            >
+              <Text color="red.600" fontSize="sm">
+                ⚠️ Using fallback data due to AI service error: {error}
+              </Text>
+            </Box>
+          )}
         </Box>
 
         {/* Summary */}
