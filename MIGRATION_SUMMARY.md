@@ -3,6 +3,7 @@
 ## Changes Made
 
 ### 1. Updated Serverless Function (`netlify/functions/generate-career-insights.js`)
+
 - **API Endpoint**: Changed from Anthropic Claude to Google Gemini API
 - **URL**: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent`
 - **Authentication**: Now uses `GEMINI_API_KEY` as URL parameter instead of header
@@ -11,10 +12,12 @@
 - **Response Parsing**: Updated to parse Gemini's response structure (`candidates[0].content.parts[0].text`)
 
 ### 2. Environment Variables (`.env.example`)
+
 - **Changed**: `ANTHROPIC_API_KEY` → `GEMINI_API_KEY`
 - **Source**: Get key from [Google AI Studio](https://aistudio.google.com/app/apikey)
 
 ### 3. Documentation (`SERVERLESS_SETUP.md`)
+
 - **Updated**: All references to Anthropic → Google Gemini
 - **API Key Setup**: Updated instructions for Google AI Studio
 - **Model Info**: Added specification of Gemini 2.0 Flash model
@@ -54,12 +57,10 @@
   candidates: [
     {
       content: {
-        parts: [
-          { text: "JSON response string" }
-        ]
-      }
-    }
-  ]
+        parts: [{ text: "JSON response string" }],
+      },
+    },
+  ];
 }
 ```
 
