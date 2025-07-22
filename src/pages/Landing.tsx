@@ -58,7 +58,7 @@ const Landing: React.FC = () => {
             color={colorMode === "light" ? "customGray.600" : "customGray.300"}
             lineHeight="1.6"
           >
-            Discover personalized career paths based on your studies, interests,
+            Discover personalised career paths based on your studies, interests,
             and goals. Get AI-powered insights that reveal your unique strengths
             and show you exactly where to go next.
           </Text>
@@ -136,7 +136,7 @@ const Landing: React.FC = () => {
                 mb={3}
                 color={colorMode === "light" ? "customGray.900" : "white"}
               >
-                Personalized Analysis
+                Personalised Analysis
               </Heading>
               <Text
                 color={
@@ -144,7 +144,7 @@ const Landing: React.FC = () => {
                 }
                 lineHeight="1.6"
               >
-                Tell us about your degree, favorite modules, and interests to
+                Tell us about your degree, favourite modules, and interests to
                 get insights tailored specifically to you.
               </Text>
             </Box>
@@ -178,7 +178,7 @@ const Landing: React.FC = () => {
                 lineHeight="1.6"
               >
                 Uncover your transferable skills, technical abilities, and
-                unique strengths you might not have realized.
+                unique strengths you might not have realised.
               </Text>
             </Box>
 

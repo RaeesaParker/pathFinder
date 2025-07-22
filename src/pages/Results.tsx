@@ -150,7 +150,7 @@ const Results: React.FC = () => {
             {
               title: "Innovation Consultant",
               description:
-                "Help organizations embrace new technologies and transform their business models.",
+                "Help organisations embrace new technologies and transform their business models.",
               nextSteps: [
                 "Study emerging technology trends",
                 "Develop change management skills",
@@ -184,7 +184,7 @@ const Results: React.FC = () => {
             fontSize="xl"
             color={colorMode === "light" ? "customGray.700" : "customGray.300"}
           >
-            Generating your personalized career insights...
+            Generating your personalised career insights...
           </Text>
           <Text
             fontSize="md"

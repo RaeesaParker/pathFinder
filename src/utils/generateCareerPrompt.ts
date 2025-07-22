@@ -6,12 +6,12 @@ interface FormData {
 }
 
 /**
- * Generates a prompt for Sonnet to create personalized career insights
+ * Generates a prompt for Sonnet to create personalised career insights
  * @param formData - The user's form data containing degree, modules, interests, and goals
  * @returns A formatted prompt string ready to send to Sonnet
  */
 export const generateCareerPrompt = (formData: FormData): string => {
-  return `You are a career guidance expert. Based on the following form data from a user, generate personalized career insights in the exact JSON format specified below.
+  return `You are a career guidance expert. Based on the following form data from a user, generate personalised career insights in the exact JSON format specified below.
 
 Form Data:
 ${JSON.stringify(formData, null, 2)}
@@ -19,7 +19,7 @@ ${JSON.stringify(formData, null, 2)}
 Generate a response that matches this exact structure:
 
 {
-  "summary": "A personalized 2-3 sentence summary that mentions their degree, modules, and interests, highlighting their unique skill combination",
+  "summary": "A personalised 2-3 sentence summary that mentions their degree, modules, and interests, highlighting their unique skill combination",
   "transferableSkills": ["Array of 6-8 transferable skills they've developed"],
   "technicalSkills": ["Array of 4-6 technical skills relevant to their degree field"],
   "interestSkills": ["Array of 3-5 skills derived from their hobbies/interests"],

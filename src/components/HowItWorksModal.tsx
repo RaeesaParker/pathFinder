@@ -31,15 +31,15 @@ const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
       icon: User,
       title: "Tell Us About Yourself",
       description:
-        "Share your degree, favorite modules, hobbies, and career goals. This takes just 2-3 minutes.",
+        "Share your degree, favourite modules, hobbies, and career goals. This takes just 2-3 minutes.",
       details:
-        "The more details you provide, the more personalized your results will be.",
+        "The more details you provide, the more personalised your results will be.",
     },
     {
       icon: Brain,
       title: "AI Analysis",
       description:
-        "Our intelligent system analyzes your background to identify your unique strengths and transferable skills.",
+        "Our intelligent system analyses your background to identify your unique strengths and transferable skills.",
       details:
         "We match your profile against thousands of career paths and success stories.",
     },
@@ -47,7 +47,7 @@ const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
       icon: Target,
       title: "Discover Career Paths",
       description:
-        "Get 3 personalized career recommendations with detailed descriptions and why they're perfect for you.",
+        "Get 3 personalised career recommendations with detailed descriptions and why they're perfect for you.",
       details: "Each path includes specific next steps and actionable advice.",
     },
     {

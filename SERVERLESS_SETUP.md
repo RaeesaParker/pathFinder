@@ -2,7 +2,7 @@
 
 ## Serverless Function Setup
 
-This application uses Netlify serverless functions to securely call the Google Gemini API for generating personalized career insights.
+This application uses Netlify serverless functions to securely call the Google Gemini API for generating personalised career insights.
 
 ### Environment Variables
 
