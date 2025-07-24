@@ -217,6 +217,7 @@ const Results: React.FC = () => {
             textAlign="center"
             mb={2}
             color={colorMode === "light" ? "customGray.900" : "white"}
+            aria-label="Career insights results heading"
           >
             Your Career{" "}
             <Text as="span" color="brand.600">
@@ -226,6 +227,7 @@ const Results: React.FC = () => {
           <Text
             fontSize="xl"
             color={colorMode === "light" ? "customGray.600" : "customGray.300"}
+            aria-label="Results subtitle"
           >
             Based on your unique background and interests
           </Text>
@@ -237,6 +239,8 @@ const Results: React.FC = () => {
               borderColor="red.200"
               borderWidth="1px"
               borderRadius="md"
+              role="alert"
+              aria-label="Error message"
             >
               <Text color="red.600" fontSize="sm">
                 ⚠️ Using fallback data due to AI service error: {error}
@@ -256,9 +260,11 @@ const Results: React.FC = () => {
           borderColor={
             colorMode === "light" ? "customGray.300" : "customGray.600"
           }
+          role="region"
+          aria-label="Career summary section"
         >
           <Flex align="center" mb={4} gap={2}>
-            <Icon as={User} w={6} h={6} color="brand.600" />
+            <Icon as={User} w={6} h={6} color="brand.600" aria-hidden="true" />
             <Heading
               as="h3"
               fontSize="2xl"
@@ -278,7 +284,13 @@ const Results: React.FC = () => {
         </Box>
 
         {/* Skills */}
-        <SimpleGrid columns={{ base: 1, md: 3 }} gap={6} mb={8}>
+        <SimpleGrid
+          columns={{ base: 1, md: 3 }}
+          gap={6}
+          mb={8}
+          role="region"
+          aria-label="Skills breakdown section"
+        >
           <Box
             bg={colorMode === "light" ? "white" : "customGray.800"}
             borderRadius="lg"
@@ -483,6 +495,7 @@ const Results: React.FC = () => {
             fontWeight="semibold"
             _hover={{ bg: "brand.700" }}
             onClick={() => navigate("/form")}
+            aria-label="Start a new career path exploration"
           >
             Explore Another Path
           </Button>

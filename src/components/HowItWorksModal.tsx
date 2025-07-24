@@ -80,6 +80,9 @@ const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
             mx={4}
             maxH="90vh"
             overflow="hidden"
+            role="dialog"
+            aria-label="How PathFinder works explanation"
+            aria-modal="true"
           >
             <Dialog.Header
               pb={3}
@@ -108,6 +111,7 @@ const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
                         ? "customGray.100"
                         : "customGray.700",
                   }}
+                  aria-label="Close how it works modal"
                 />
               </Dialog.CloseTrigger>
             </Dialog.Header>
@@ -124,10 +128,14 @@ const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
               Discover your ideal career path in 4 simple steps
             </Text>
 
-            <Dialog.Body py={6} overflowY="auto">
+            <Dialog.Body py={6} overflowY="auto" role="main">
               <VStack gap={6} align="stretch">
                 {steps.map((step, index) => (
-                  <Box key={index}>
+                  <Box
+                    key={index}
+                    role="article"
+                    aria-label={`Step ${index + 1}: ${step.title}`}
+                  >
                     <HStack align="flex-start" gap={3} mb={3}>
                       <Flex
                         w={10}
@@ -139,7 +147,7 @@ const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
                         color="brand.600"
                         flexShrink={0}
                       >
-                        <Icon as={step.icon} w={5} h={5} />
+                        <Icon as={step.icon} w={5} h={5} aria-hidden="true" />
                       </Flex>
                       <Box flex={1}>
                         <HStack align="center" mb={2}>

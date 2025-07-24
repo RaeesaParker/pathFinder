@@ -35,7 +35,11 @@ const Landing: React.FC = () => {
 
       {/* Hero Section */}
       <Container maxW="7xl" py={20}>
-        <Box textAlign="center">
+        <Box
+          textAlign="center"
+          role="banner"
+          aria-label="PathFinder hero section"
+        >
           <Heading
             as="h1"
             size={{ base: "3xl", md: "5xl" }}
@@ -43,6 +47,7 @@ const Landing: React.FC = () => {
             mb={6}
             color={colorMode === "light" ? "customGray.900" : "white"}
             lineHeight="1.1"
+            aria-label="Main heading for career discovery platform"
           >
             Not sure where your degree will take you?{" "}
             <Text as="span" color="brand.600">
@@ -57,6 +62,7 @@ const Landing: React.FC = () => {
             mx="auto"
             color={colorMode === "light" ? "customGray.600" : "customGray.300"}
             lineHeight="1.6"
+            aria-label="Platform description"
           >
             Discover personalised career paths based on your studies, interests,
             and goals. Get AI-powered insights that reveal your unique strengths
@@ -68,6 +74,8 @@ const Landing: React.FC = () => {
             gap={4}
             justify="center"
             mb={16}
+            role="group"
+            aria-label="Main action buttons"
           >
             <Button
               bg="brand.600"
@@ -79,10 +87,11 @@ const Landing: React.FC = () => {
               fontWeight="semibold"
               _hover={{ bg: "brand.700" }}
               onClick={handleGetStarted}
+              aria-label="Start exploring career paths"
             >
               <Flex align="center" gap={2}>
                 <Text>Explore Careers</Text>
-                <ArrowRight size={20} />
+                <ArrowRight size={20} aria-hidden="true" />
               </Flex>
             </Button>
             <Button
@@ -105,6 +114,7 @@ const Landing: React.FC = () => {
                   colorMode === "light" ? "customGray.900" : "customGray.600",
               }}
               onClick={onOpen}
+              aria-label="Open modal to see how PathFinder works"
             >
               See How It Works
             </Button>
@@ -113,10 +123,19 @@ const Landing: React.FC = () => {
       </Container>
 
       {/* Features Section */}
-      <Box bg={colorMode === "light" ? "white" : "customGray.800"} py={20}>
+      <Box
+        bg={colorMode === "light" ? "white" : "customGray.800"}
+        py={20}
+        role="region"
+        aria-label="Key features section"
+      >
         <Container maxW="7xl">
           <SimpleGrid columns={{ base: 1, md: 3 }} gap={8}>
-            <Box textAlign="center">
+            <Box
+              textAlign="center"
+              role="article"
+              aria-label="Personalised analysis feature"
+            >
               <Flex
                 w={20}
                 h={20}
@@ -127,7 +146,13 @@ const Landing: React.FC = () => {
                 borderRadius="full"
                 bg={colorMode === "light" ? "brand.100" : "brand.900"}
               >
-                <Icon as={User} w={8} h={8} color="brand.600" />
+                <Icon
+                  as={User}
+                  w={8}
+                  h={8}
+                  color="brand.600"
+                  aria-hidden="true"
+                />
               </Flex>
               <Heading
                 as="h3"
@@ -149,7 +174,11 @@ const Landing: React.FC = () => {
               </Text>
             </Box>
 
-            <Box textAlign="center">
+            <Box
+              textAlign="center"
+              role="article"
+              aria-label="Skills discovery feature"
+            >
               <Flex
                 w={20}
                 h={20}
@@ -160,7 +189,13 @@ const Landing: React.FC = () => {
                 borderRadius="full"
                 bg={colorMode === "light" ? "brand.100" : "brand.900"}
               >
-                <Icon as={Lightbulb} w={8} h={8} color="brand.600" />
+                <Icon
+                  as={Lightbulb}
+                  w={8}
+                  h={8}
+                  color="brand.600"
+                  aria-hidden="true"
+                />
               </Flex>
               <Heading
                 as="h3"
@@ -182,7 +217,11 @@ const Landing: React.FC = () => {
               </Text>
             </Box>
 
-            <Box textAlign="center">
+            <Box
+              textAlign="center"
+              role="article"
+              aria-label="Career roadmap feature"
+            >
               <Flex
                 w={20}
                 h={20}
@@ -193,7 +232,13 @@ const Landing: React.FC = () => {
                 borderRadius="full"
                 bg={colorMode === "light" ? "brand.100" : "brand.900"}
               >
-                <Icon as={TrendingUp} w={8} h={8} color="brand.600" />
+                <Icon
+                  as={TrendingUp}
+                  w={8}
+                  h={8}
+                  color="brand.600"
+                  aria-hidden="true"
+                />
               </Flex>
               <Heading
                 as="h3"

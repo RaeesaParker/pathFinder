@@ -116,6 +116,8 @@ const Form: React.FC = () => {
           }
           p={8}
           mb={8}
+          role="banner"
+          aria-label="Form introduction section"
         >
           <Heading
             as="h2"
@@ -135,7 +137,11 @@ const Form: React.FC = () => {
           </Text>
         </Box>
 
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          role="form"
+          aria-label="Career discovery form"
+        >
           <VStack gap={8}>
             {/* Degree Input */}
             <Box
@@ -148,9 +154,17 @@ const Form: React.FC = () => {
                 colorMode === "light" ? "customGray.300" : "customGray.600"
               }
               p={8}
+              role="group"
+              aria-label="Degree information section"
             >
               <Flex align="center" mb={6} gap={3}>
-                <Icon as={BookOpen} w={6} h={6} color="brand.600" />
+                <Icon
+                  as={BookOpen}
+                  w={6}
+                  h={6}
+                  color="brand.600"
+                  aria-hidden="true"
+                />
                 <Heading
                   as="h3"
                   fontSize="xl"
@@ -185,7 +199,19 @@ const Form: React.FC = () => {
                   boxShadow: "0 0 0 1px var(--chakra-colors-brand-600)",
                 }}
                 required
+                aria-label="Enter your degree or field of study"
+                aria-describedby="degree-help"
               />
+              <Text
+                id="degree-help"
+                fontSize="sm"
+                color={
+                  colorMode === "light" ? "customGray.500" : "customGray.400"
+                }
+                mt={2}
+              >
+                This helps us understand your academic background
+              </Text>
             </Box>
 
             {/* Modules Input */}
@@ -199,9 +225,17 @@ const Form: React.FC = () => {
                 colorMode === "light" ? "customGray.300" : "customGray.600"
               }
               p={8}
+              role="group"
+              aria-label="Modules and topics section"
             >
               <Flex align="center" mb={6} gap={3}>
-                <Icon as={Target} w={6} h={6} color="brand.600" />
+                <Icon
+                  as={Target}
+                  w={6}
+                  h={6}
+                  color="brand.600"
+                  aria-hidden="true"
+                />
                 <Heading
                   as="h3"
                   fontSize="xl"
@@ -237,6 +271,8 @@ const Form: React.FC = () => {
                     boxShadow: "0 0 0 1px var(--chakra-colors-brand-600)",
                   }}
                   onKeyPress={(e) => handleKeyPress(e, addModule)}
+                  aria-label="Enter a module or topic you enjoyed"
+                  aria-describedby="modules-help"
                 />
                 <Button
                   onClick={addModule}
@@ -244,16 +280,28 @@ const Form: React.FC = () => {
                   color="white"
                   _hover={{ bg: "brand.700" }}
                   px={6}
+                  aria-label="Add module to list"
                 >
                   Add
                 </Button>
               </HStack>
-              <Flex wrap="wrap" gap={2}>
+              <Text
+                id="modules-help"
+                fontSize="sm"
+                color={
+                  colorMode === "light" ? "customGray.500" : "customGray.400"
+                }
+                mb={3}
+              >
+                Add modules one at a time. Click 'Add' or press Enter to add
+                each one.
+              </Text>
+              <Flex wrap="wrap" gap={2} role="list" aria-label="Added modules">
                 {formData.modules.map((module) => (
                   <Box
                     key={module}
                     bg={colorMode === "light" ? "brand.50" : "brand.900"}
-                    color="brand.600"
+                    color={colorMode === "light" ? "brand.600" : "brand.100"}
                     borderRadius="full"
                     px={3}
                     py={2}
@@ -261,11 +309,14 @@ const Form: React.FC = () => {
                     display="flex"
                     alignItems="center"
                     gap={2}
+                    role="listitem"
                   >
                     <Text>{module}</Text>
                     <CloseButton
                       size="sm"
                       onClick={() => removeModule(module)}
+                      aria-label={`Remove ${module} from modules list`}
+                      color={colorMode === "light" ? "brand.600" : "brand.600"}
                     />
                   </Box>
                 ))}
@@ -283,9 +334,17 @@ const Form: React.FC = () => {
                 colorMode === "light" ? "customGray.300" : "customGray.600"
               }
               p={8}
+              role="group"
+              aria-label="Interests and hobbies section"
             >
               <Flex align="center" mb={6} gap={3}>
-                <Icon as={Heart} w={6} h={6} color="brand.600" />
+                <Icon
+                  as={Heart}
+                  w={6}
+                  h={6}
+                  color="brand.600"
+                  aria-hidden="true"
+                />
                 <Heading
                   as="h3"
                   fontSize="xl"
@@ -321,6 +380,8 @@ const Form: React.FC = () => {
                     boxShadow: "0 0 0 1px var(--chakra-colors-brand-600)",
                   }}
                   onKeyPress={(e) => handleKeyPress(e, addInterest)}
+                  aria-label="Enter a hobby or interest"
+                  aria-describedby="interests-help"
                 />
                 <Button
                   onClick={addInterest}
@@ -328,16 +389,33 @@ const Form: React.FC = () => {
                   color="white"
                   _hover={{ bg: "brand.700" }}
                   px={6}
+                  aria-label="Add interest to list"
                 >
                   Add
                 </Button>
               </HStack>
-              <Flex wrap="wrap" gap={2}>
+              <Text
+                id="interests-help"
+                fontSize="sm"
+                color={
+                  colorMode === "light" ? "customGray.500" : "customGray.400"
+                }
+                mb={3}
+              >
+                Add interests one at a time. These help us understand your
+                personality and passions.
+              </Text>
+              <Flex
+                wrap="wrap"
+                gap={2}
+                role="list"
+                aria-label="Added interests"
+              >
                 {formData.interests.map((interest) => (
                   <Box
                     key={interest}
                     bg={colorMode === "light" ? "brand.50" : "brand.900"}
-                    color="brand.600"
+                    color={colorMode === "light" ? "brand.600" : "brand.100"}
                     borderRadius="full"
                     px={3}
                     py={2}
@@ -345,11 +423,14 @@ const Form: React.FC = () => {
                     display="flex"
                     alignItems="center"
                     gap={2}
+                    role="listitem"
                   >
                     <Text>{interest}</Text>
                     <CloseButton
                       size="sm"
                       onClick={() => removeInterest(interest)}
+                      aria-label={`Remove ${interest} from interests list`}
+                      color={colorMode === "light" ? "brand.600" : "brand.600"}
                     />
                   </Box>
                 ))}
@@ -367,9 +448,17 @@ const Form: React.FC = () => {
                 colorMode === "light" ? "customGray.300" : "customGray.600"
               }
               p={8}
+              role="group"
+              aria-label="Career goals section"
             >
               <Flex align="center" mb={6} gap={3}>
-                <Icon as={TrendingUp} w={6} h={6} color="brand.600" />
+                <Icon
+                  as={TrendingUp}
+                  w={6}
+                  h={6}
+                  color="brand.600"
+                  aria-hidden="true"
+                />
                 <Heading
                   as="h3"
                   fontSize="xl"
@@ -404,7 +493,19 @@ const Form: React.FC = () => {
                   borderColor: "brand.600",
                   boxShadow: "0 0 0 1px var(--chakra-colors-brand-600)",
                 }}
+                aria-label="Enter your career goals and dreams"
+                aria-describedby="goals-help"
               />
+              <Text
+                id="goals-help"
+                fontSize="sm"
+                color={
+                  colorMode === "light" ? "customGray.500" : "customGray.400"
+                }
+                mt={2}
+              >
+                Optional: Share any career aspirations or dreams you have.
+              </Text>
             </Box>
 
             <Button
@@ -428,10 +529,11 @@ const Form: React.FC = () => {
                   colorMode === "light" ? "customGray.500" : "customGray.400",
                 cursor: "not-allowed",
               }}
+              aria-label="Submit form to discover career paths"
             >
               <Flex align="center" gap={2}>
                 <Text>Discover My Path</Text>
-                <ArrowRight size={20} />
+                <ArrowRight size={20} aria-hidden="true" />
               </Flex>
             </Button>
           </VStack>
