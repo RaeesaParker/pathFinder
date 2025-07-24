@@ -6,6 +6,7 @@ import {
   Flex,
   Heading,
   Icon,
+  Link,
   SimpleGrid,
   Text,
   VStack,
@@ -22,6 +23,7 @@ interface FormData {
   modules: string[];
   interests: string[];
   goals: string;
+  lifeGoals: string;
 }
 
 interface CareerInsight {
@@ -34,6 +36,7 @@ interface CareerInsight {
     description: string;
     nextSteps: string[];
     encouragement: string;
+    lifeAlignment: string;
   }[];
 }
 
@@ -110,6 +113,8 @@ const Results: React.FC = () => {
               ],
               encouragement:
                 "Your technical background gives you a unique advantage in understanding both user needs and technical feasibility.",
+              lifeAlignment:
+                "This role offers excellent work-life balance and the opportunity to make a meaningful impact through technology solutions.",
             },
             {
               title: "Data Scientist",
@@ -122,6 +127,8 @@ const Results: React.FC = () => {
               ],
               encouragement:
                 "Your analytical skills from your degree are exactly what employers in this field are looking for.",
+              lifeAlignment:
+                "Data science roles often provide flexibility and the satisfaction of solving complex problems that benefit society.",
             },
             {
               title: "UX Designer",
@@ -134,6 +141,8 @@ const Results: React.FC = () => {
               ],
               encouragement:
                 "Your logical thinking combined with creativity can create truly innovative user experiences.",
+              lifeAlignment:
+                "UX design offers creative fulfillment while helping make technology more accessible and user-friendly for everyone.",
             },
             {
               title: "Content Strategist",
@@ -146,6 +155,8 @@ const Results: React.FC = () => {
               ],
               encouragement:
                 "Your communication skills and creative thinking are exactly what brands need to connect with audiences.",
+              lifeAlignment:
+                "Content strategy roles offer creative freedom and the ability to educate and inspire others through storytelling.",
             },
             {
               title: "Innovation Consultant",
@@ -158,6 +169,8 @@ const Results: React.FC = () => {
               ],
               encouragement:
                 "Your diverse background positions you perfectly to bridge traditional business with cutting-edge innovation.",
+              lifeAlignment:
+                "Innovation consulting provides variety, intellectual stimulation, and the chance to shape the future of organizations.",
             },
           ],
         };
@@ -475,9 +488,24 @@ const Results: React.FC = () => {
                 bg={colorMode === "light" ? "brand.50" : "brand.900"}
                 p={4}
                 borderRadius="lg"
+                mb="3"
               >
-                <Text fontWeight="medium" fontStyle="italic" color="brand.600">
+                <Text
+                  fontWeight="medium"
+                  fontStyle="italic"
+                  color={colorMode === "light" ? "brand.600" : "brand.300"}
+                >
                   💡 {path.encouragement}
+                </Text>
+              </Box>
+
+              <Box
+                bg={colorMode === "light" ? "green.50" : "green.900"}
+                p={4}
+                borderRadius="lg"
+              >
+                <Text fontWeight="medium" color="green.600">
+                  🌟 Life Alignment: {path.lifeAlignment}
                 </Text>
               </Box>
             </Box>
@@ -485,20 +513,62 @@ const Results: React.FC = () => {
         </VStack>
 
         <Box textAlign="center" mt={12}>
-          <Button
-            bg="brand.600"
-            color="white"
-            size="lg"
-            px={8}
-            py={4}
+          <Text
             fontSize="lg"
-            fontWeight="semibold"
-            _hover={{ bg: "brand.700" }}
-            onClick={() => navigate("/form")}
-            aria-label="Start a new career path exploration"
+            color={colorMode === "light" ? "customGray.700" : "customGray.300"}
+            mb={6}
+            maxW="2xl"
+            mx="auto"
+            lineHeight="1.6"
           >
-            Explore Another Path
-          </Button>
+            Ready to take the next step? If you want expert advice on what to do
+            next, discuss these career options with our careers team who can
+            provide personalized guidance and support for your journey.
+          </Text>
+          <Flex
+            direction={{ base: "column", md: "row" }}
+            gap={4}
+            justify="center"
+            align="center"
+          >
+            <Button
+              bg="brand.600"
+              color="white"
+              size="lg"
+              px={8}
+              py={4}
+              fontSize="lg"
+              fontWeight="semibold"
+              _hover={{ bg: "brand.700" }}
+              onClick={() => navigate("/form")}
+              aria-label="Start a new career path exploration"
+            >
+              Explore Another Path
+            </Button>
+            <Link
+              href="https://careersconnect.lancaster-university.uk/unauth"
+              target="_blank"
+              rel="noopener noreferrer"
+              _hover={{ textDecoration: "none" }}
+              aria-label="Contact Lancaster University Careers service to discuss your path further"
+            >
+              <Button
+                bg={colorMode === "light" ? "green.600" : "green.700"}
+                color="white"
+                size="lg"
+                px={8}
+                py={4}
+                fontSize="lg"
+                fontWeight="semibold"
+                _hover={{
+                  bg: colorMode === "light" ? "green.700" : "green.800",
+                }}
+                w="full"
+              >
+                Contact Careers to Discuss Further
+              </Button>
+            </Link>
+          </Flex>
         </Box>
       </Container>
     </Box>

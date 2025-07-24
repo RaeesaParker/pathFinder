@@ -13,7 +13,14 @@ import {
   Textarea,
   VStack,
 } from "@chakra-ui/react";
-import { ArrowRight, BookOpen, Heart, Target, TrendingUp } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Heart,
+  Target,
+  TrendingUp,
+  Users,
+} from "lucide-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +31,7 @@ interface FormData {
   modules: string[];
   interests: string[];
   goals: string;
+  lifeGoals: string;
 }
 
 const Form: React.FC = () => {
@@ -34,6 +42,7 @@ const Form: React.FC = () => {
     modules: [],
     interests: [],
     goals: "",
+    lifeGoals: "",
   });
 
   const [currentModule, setCurrentModule] = useState("");
@@ -505,6 +514,81 @@ const Form: React.FC = () => {
                 mt={2}
               >
                 Optional: Share any career aspirations or dreams you have.
+              </Text>
+            </Box>
+
+            {/* Life Goals Input */}
+            <Box
+              w="full"
+              bg={colorMode === "light" ? "white" : "customGray.800"}
+              borderRadius="lg"
+              boxShadow="sm"
+              border="1px"
+              borderColor={
+                colorMode === "light" ? "customGray.300" : "customGray.600"
+              }
+              p={8}
+              role="group"
+              aria-label="Life goals and values section"
+            >
+              <Flex align="center" mb={6} gap={3}>
+                <Icon
+                  as={Users}
+                  w={6}
+                  h={6}
+                  color="brand.600"
+                  aria-hidden="true"
+                />
+                <Heading
+                  as="h3"
+                  fontSize="xl"
+                  fontWeight="semibold"
+                  color={
+                    colorMode === "light" ? "customGray.900" : "customGray.50"
+                  }
+                >
+                  What are your life goals and values?
+                </Heading>
+              </Flex>
+              <Textarea
+                value={formData.lifeGoals}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    lifeGoals: e.target.value,
+                  }))
+                }
+                placeholder="e.g., I want good work-life balance, to make a difference in the world, to help others, to have financial security, to travel and experience different cultures..."
+                rows={3}
+                resize="none"
+                bg={colorMode === "light" ? "white" : "customGray.800"}
+                borderColor={
+                  colorMode === "light" ? "customGray.300" : "customGray.600"
+                }
+                color={
+                  colorMode === "light" ? "customGray.900" : "customGray.50"
+                }
+                _placeholder={{
+                  color:
+                    colorMode === "light" ? "customGray.500" : "customGray.400",
+                }}
+                _focus={{
+                  borderColor: "brand.600",
+                  boxShadow: "0 0 0 1px var(--chakra-colors-brand-600)",
+                }}
+                aria-label="Enter your life goals and personal values"
+                aria-describedby="life-goals-help"
+              />
+              <Text
+                id="life-goals-help"
+                fontSize="sm"
+                color={
+                  colorMode === "light" ? "customGray.500" : "customGray.400"
+                }
+                mt={2}
+              >
+                Optional: Share your personal values and what matters most to
+                you in life beyond career.
               </Text>
             </Box>
 
