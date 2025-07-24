@@ -93,7 +93,9 @@ const Form: React.FC = () => {
     if (
       formData.degree &&
       formData.modules.length > 0 &&
-      formData.interests.length > 0
+      formData.interests.length > 0 &&
+      formData.goals &&
+      formData.lifeGoals
     ) {
       // Pass form data via state to results page
       navigate("/results", { state: { formData } });
@@ -504,6 +506,7 @@ const Form: React.FC = () => {
                 }}
                 aria-label="Enter your career goals and dreams"
                 aria-describedby="goals-help"
+                required
               />
               <Text
                 id="goals-help"
@@ -578,6 +581,7 @@ const Form: React.FC = () => {
                 }}
                 aria-label="Enter your life goals and personal values"
                 aria-describedby="life-goals-help"
+                required
               />
               <Text
                 id="life-goals-help"
@@ -597,7 +601,9 @@ const Form: React.FC = () => {
               disabled={
                 !formData.degree ||
                 formData.modules.length === 0 ||
-                formData.interests.length === 0
+                formData.interests.length === 0 ||
+                !formData.goals ||
+                !formData.lifeGoals
               }
               w="full"
               bg="brand.600"
