@@ -31,6 +31,7 @@ PathFinder is an intelligent career guidance application that helps students and
 
 - TypeScript for type safety
 - ESLint for code quality
+- Vitest for testing
 - Netlify hosting with automatic deployments
 
 ## Setup & Development
