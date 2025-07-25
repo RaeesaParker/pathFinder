@@ -18,7 +18,7 @@ Form Data:
 ${JSON.stringify(formData, null, 2)}
 
 
-Generate a response that matches this exact structure:
+Generate a response, in British English, that matches this exact structure:
 
 {
   "summary": "A personalised 2-3 sentence summary that mentions their degree, modules, interests, and how their life goals align with potential career directions",
