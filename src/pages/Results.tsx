@@ -527,7 +527,7 @@ const Results: React.FC = () => {
           >
             Ready to take the next step? If you want expert advice on what to do
             next, discuss these career options with our careers team who can
-            provide personalized guidance and support for your journey.
+            provide personalised guidance and support for your journey.
           </Text>
           <Flex
             direction={{ base: "column", md: "row" }}
