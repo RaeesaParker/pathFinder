@@ -302,7 +302,7 @@ const Form: React.FC = () => {
                   onClick={addModule}
                   bg="brand.600"
                   color="white"
-                  _hover={{ bg: "brand.700" }}
+                  _hover={{ bg: "brand.700", cursor: "pointer" }}
                   px={6}
                   aria-label="Add module to list"
                 >
@@ -330,6 +330,7 @@ const Form: React.FC = () => {
                       onClick={() => removeModule(module)}
                       aria-label={`Remove ${module} from modules list`}
                       color={colorMode === "light" ? "brand.600" : "brand.600"}
+                      _hover={{ cursor: "pointer" }}
                     />
                   </Box>
                 ))}
@@ -412,7 +413,7 @@ const Form: React.FC = () => {
                   onClick={addInterest}
                   bg="brand.600"
                   color="white"
-                  _hover={{ bg: "brand.700" }}
+                  _hover={{ bg: "brand.700", cursor: "pointer" }}
                   px={6}
                   aria-label="Add interest to list"
                 >
@@ -446,6 +447,7 @@ const Form: React.FC = () => {
                       onClick={() => removeInterest(interest)}
                       aria-label={`Remove ${interest} from interests list`}
                       color={colorMode === "light" ? "brand.600" : "brand.600"}
+                      _hover={{ cursor: "pointer" }}
                     />
                   </Box>
                 ))}
@@ -618,7 +620,7 @@ const Form: React.FC = () => {
               py={4}
               fontSize="lg"
               fontWeight="semibold"
-              _hover={{ bg: "brand.700" }}
+              _hover={{ bg: "brand.700", cursor: "pointer" }}
               _disabled={{
                 bg: colorMode === "light" ? "customGray.300" : "customGray.600",
                 color:

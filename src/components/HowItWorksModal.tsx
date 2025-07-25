@@ -109,6 +109,7 @@ const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
                       colorMode === "light"
                         ? "customGray.100"
                         : "customGray.700",
+                    cursor: "pointer",
                   }}
                   aria-label="Close how it works modal"
                 />
@@ -245,7 +246,7 @@ const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
                   py={3}
                   fontSize="md"
                   fontWeight="semibold"
-                  _hover={{ bg: "brand.700" }}
+                  _hover={{ bg: "brand.700", cursor: "pointer" }}
                   onClick={() => {
                     onGetStarted();
                     onClose();

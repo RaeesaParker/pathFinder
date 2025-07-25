@@ -81,6 +81,7 @@ const Header: React.FC<HeaderProps> = ({
               _hover={{
                 color: "brand.600",
                 bg: colorMode === "light" ? "brand.100" : "brand.900",
+                cursor: "pointer",
               }}
             >
               {colorMode === "light" ? <Moon size={20} /> : <Sun size={20} />}
@@ -90,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({
               <Button
                 bg="brand.600"
                 color="white"
-                _hover={{ bg: "brand.700" }}
+                _hover={{ bg: "brand.700", cursor: "pointer" }}
                 onClick={() => navigate("/form")}
                 size="md"
                 aria-label="Start career discovery form"
@@ -104,7 +105,7 @@ const Header: React.FC<HeaderProps> = ({
                 variant="ghost"
                 onClick={() => navigate("/form")}
                 color="brand.600"
-                _hover={{ color: "brand.700" }}
+                _hover={{ color: "brand.700", cursor: "pointer" }}
                 aria-label="Start over with a new form"
               >
                 Start Over

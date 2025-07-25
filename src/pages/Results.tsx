@@ -543,7 +543,7 @@ const Results: React.FC = () => {
               py={4}
               fontSize="lg"
               fontWeight="semibold"
-              _hover={{ bg: "brand.700" }}
+              _hover={{ bg: "brand.700", cursor: "pointer" }}
               onClick={() => navigate("/form")}
               aria-label="Start a new career path exploration"
             >
@@ -566,6 +566,7 @@ const Results: React.FC = () => {
                 fontWeight="semibold"
                 _hover={{
                   bg: colorMode === "light" ? "green.700" : "green.800",
+                  cursor: "pointer",
                 }}
                 w="full"
               >

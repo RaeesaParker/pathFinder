@@ -85,7 +85,7 @@ const Landing: React.FC = () => {
               py={4}
               fontSize="lg"
               fontWeight="semibold"
-              _hover={{ bg: "brand.700" }}
+              _hover={{ bg: "brand.700", cursor: "pointer" }}
               onClick={handleGetStarted}
               aria-label="Start exploring career paths"
             >
@@ -112,6 +112,7 @@ const Landing: React.FC = () => {
                 borderColor: "brand.600",
                 color:
                   colorMode === "light" ? "customGray.900" : "customGray.600",
+                cursor: "pointer",
               }}
               onClick={onOpen}
               aria-label="Open modal to see how Path Finder works"
