@@ -38,7 +38,7 @@ const Landing: React.FC = () => {
         <Box
           textAlign="center"
           role="banner"
-          aria-label="PathFinder hero section"
+          aria-label="Path Finder hero section"
         >
           <Heading
             as="h1"
@@ -114,7 +114,7 @@ const Landing: React.FC = () => {
                   colorMode === "light" ? "customGray.900" : "customGray.600",
               }}
               onClick={onOpen}
-              aria-label="Open modal to see how PathFinder works"
+              aria-label="Open modal to see how Path Finder works"
             >
               See How It Works
             </Button>

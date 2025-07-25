@@ -80,7 +80,7 @@ const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
             maxH="90vh"
             overflow="hidden"
             role="dialog"
-            aria-label="How PathFinder works explanation"
+            aria-label="How Path Finder works explanation"
             aria-modal="true"
           >
             <Dialog.Header
@@ -96,7 +96,7 @@ const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
                 fontWeight="bold"
                 color={colorMode === "light" ? "customGray.900" : "white"}
               >
-                How PathFinder Works
+                How Path Finder Works
               </Dialog.Title>
               <Dialog.CloseTrigger asChild>
                 <CloseButton

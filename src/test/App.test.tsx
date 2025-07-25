@@ -118,7 +118,7 @@ describe("App Integration Tests", () => {
 
     // Navigate back to home via logo
     const logoButton = screen.getByRole("button", {
-      name: /go to pathfinder home page/i,
+      name: /go to path finder home page/i,
     });
     await user.click(logoButton);
 

@@ -1,8 +1,8 @@
-# PathFinder - AI-Powered Career Discovery Platform
+# Path Finder - Using AI to Uncover Career Paths Beyond the Obvious
 
-## About PathFinder
+## About Path Finder
 
-PathFinder is an intelligent career guidance application that helps students and graduates discover personalised career opportunities based on their academic background, interests, and goals. Using AI, the platform analyses user input to generate tailored career insights, transferable skills identification, and actionable next steps.
+Path Finder is an intelligent career guidance application that helps students and graduates discover personalised career opportunities based on their academic background, interests, and goals. Using AI, the platform analyses user input to generate tailored career insights, transferable skills identification, and actionable next steps.
 
 ### What It Does
 

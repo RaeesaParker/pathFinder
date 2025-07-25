@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({
             _hover={{ color: "brand.600" }}
             gap={2}
             role="button"
-            aria-label="Go to PathFinder home page"
+            aria-label="Go to Path Finder home page"
             tabIndex={0}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({
               fontWeight="bold"
               color={colorMode === "light" ? "customGray.900" : "white"}
             >
-              PathFinder
+              Path Finder
             </Heading>
           </Flex>
 

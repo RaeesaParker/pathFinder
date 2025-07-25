@@ -27,14 +27,14 @@ describe("Header Component", () => {
     mockNavigate.mockClear();
   });
 
-  it("renders the PathFinder logo", () => {
+  it("renders the Path Finder logo", () => {
     render(
       <TestWrapper>
         <Header />
       </TestWrapper>
     );
 
-    expect(screen.getByText("PathFinder")).toBeInTheDocument();
+    expect(screen.getByText("Path Finder")).toBeInTheDocument();
   });
 
   it("has navigation banner role", () => {
@@ -57,7 +57,7 @@ describe("Header Component", () => {
     );
 
     const logoButton = screen.getByRole("button", {
-      name: /go to pathfinder home page/i,
+      name: /go to path finder home page/i,
     });
     await user.click(logoButton);
 
@@ -86,7 +86,7 @@ describe("Header Component", () => {
     );
 
     const logoButton = screen.getByRole("button", {
-      name: /go to pathfinder home page/i,
+      name: /go to path finder home page/i,
     });
 
     // Focus and press Enter
@@ -171,7 +171,7 @@ describe("Header Component", () => {
     expect(header).toBeInTheDocument();
 
     // The header should contain the logo and theme toggle
-    expect(screen.getByText("PathFinder")).toBeInTheDocument();
+    expect(screen.getByText("Path Finder")).toBeInTheDocument();
     expect(
       screen.getByRole("button", {
         name: /switch to (light|dark) mode/i,
@@ -188,7 +188,7 @@ describe("Header Component", () => {
 
     // All interactive elements should have proper labels
     expect(
-      screen.getByRole("button", { name: /go to pathfinder home page/i })
+      screen.getByRole("button", { name: /go to path finder home page/i })
     ).toBeInTheDocument();
     expect(
       screen.getByRole("button", {
@@ -209,7 +209,7 @@ describe("Header Component", () => {
     );
 
     const logoButton = screen.getByRole("button", {
-      name: /go to pathfinder home page/i,
+      name: /go to path finder home page/i,
     });
 
     // Click multiple times rapidly

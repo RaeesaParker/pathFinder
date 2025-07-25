@@ -69,7 +69,7 @@ describe("Landing Component", () => {
     );
 
     const howItWorksButton = screen.getByRole("button", {
-      name: /open modal to see how pathfinder works/i,
+      name: /open modal to see how path finder works/i,
     });
     expect(howItWorksButton).toBeInTheDocument();
 
@@ -77,7 +77,7 @@ describe("Landing Component", () => {
 
     // Check if modal opens
     expect(
-      screen.getByRole("dialog", { name: /how pathfinder works/i })
+      screen.getByRole("dialog", { name: /how path finder works/i })
     ).toBeInTheDocument();
   });
 
@@ -103,7 +103,7 @@ describe("Landing Component", () => {
 
     // Check for banner role
     const bannerSection = screen.getByRole("banner", {
-      name: /pathfinder hero section/i,
+      name: /path finder hero section/i,
     });
     expect(bannerSection).toBeInTheDocument();
 
@@ -137,7 +137,7 @@ describe("Landing Component", () => {
 
     // Open modal first
     const howItWorksButton = screen.getByRole("button", {
-      name: /open modal to see how pathfinder works/i,
+      name: /open modal to see how path finder works/i,
     });
     await user.click(howItWorksButton);
 
@@ -231,7 +231,7 @@ describe("Landing Component", () => {
 
     // Open modal
     const howItWorksButton = screen.getByRole("button", {
-      name: /open modal to see how pathfinder works/i,
+      name: /open modal to see how path finder works/i,
     });
     await user.click(howItWorksButton);
 
