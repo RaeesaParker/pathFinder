@@ -493,7 +493,7 @@ const Results: React.FC = () => {
                 <Text
                   fontWeight="medium"
                   fontStyle="italic"
-                  color={colorMode === "light" ? "brand.600" : "brand.300"}
+                  color={colorMode === "light" ? "brand.800" : "brand.50"}
                 >
                   💡 {path.encouragement}
                 </Text>
@@ -504,7 +504,11 @@ const Results: React.FC = () => {
                 p={4}
                 borderRadius="lg"
               >
-                <Text fontWeight="medium" color="green.600">
+                <Text
+                  fontWeight="medium"
+                  fontStyle="italic"
+                  color={colorMode === "light" ? "green.800" : "green.50"}
+                >
                   🌟 Life Alignment: {path.lifeAlignment}
                 </Text>
               </Box>

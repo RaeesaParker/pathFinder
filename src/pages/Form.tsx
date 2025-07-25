@@ -168,7 +168,7 @@ const Form: React.FC = () => {
               role="group"
               aria-label="Degree information section"
             >
-              <Flex align="center" mb={6} gap={3}>
+              <Flex align="center" mb={4} gap={3}>
                 <Icon
                   as={BookOpen}
                   w={6}
@@ -187,6 +187,17 @@ const Form: React.FC = () => {
                   What's your degree or field of study?
                 </Heading>
               </Flex>
+              <Text
+                id="degree-help"
+                fontSize="smaller"
+                color={
+                  colorMode === "light" ? "customGray.500" : "customGray.400"
+                }
+                mb={4}
+                fontWeight={"semibold"}
+              >
+                This helps us understand your academic background
+              </Text>
               <Input
                 value={formData.degree}
                 onChange={(e) =>
@@ -213,16 +224,6 @@ const Form: React.FC = () => {
                 aria-label="Enter your degree or field of study"
                 aria-describedby="degree-help"
               />
-              <Text
-                id="degree-help"
-                fontSize="sm"
-                color={
-                  colorMode === "light" ? "customGray.500" : "customGray.400"
-                }
-                mt={2}
-              >
-                This helps us understand your academic background
-              </Text>
             </Box>
 
             {/* Modules Input */}
@@ -239,7 +240,7 @@ const Form: React.FC = () => {
               role="group"
               aria-label="Modules and topics section"
             >
-              <Flex align="center" mb={6} gap={3}>
+              <Flex align="center" mb={4} gap={3}>
                 <Icon
                   as={Target}
                   w={6}
@@ -258,6 +259,18 @@ const Form: React.FC = () => {
                   Which modules or topics have you enjoyed?
                 </Heading>
               </Flex>
+              <Text
+                id="modules-help"
+                fontSize="smaller"
+                color={
+                  colorMode === "light" ? "customGray.500" : "customGray.400"
+                }
+                mb={4}
+                fontWeight={"semibold"}
+              >
+                Add modules one at a time. Click 'Add' or press Enter to add
+                each one.
+              </Text>
               <HStack mb={4}>
                 <Input
                   value={currentModule}
@@ -296,17 +309,6 @@ const Form: React.FC = () => {
                   Add
                 </Button>
               </HStack>
-              <Text
-                id="modules-help"
-                fontSize="sm"
-                color={
-                  colorMode === "light" ? "customGray.500" : "customGray.400"
-                }
-                mb={3}
-              >
-                Add modules one at a time. Click 'Add' or press Enter to add
-                each one.
-              </Text>
               <Flex wrap="wrap" gap={2} role="list" aria-label="Added modules">
                 {formData.modules.map((module) => (
                   <Box
@@ -348,7 +350,7 @@ const Form: React.FC = () => {
               role="group"
               aria-label="Interests and hobbies section"
             >
-              <Flex align="center" mb={6} gap={3}>
+              <Flex align="center" mb={4} gap={3}>
                 <Icon
                   as={Heart}
                   w={6}
@@ -367,6 +369,18 @@ const Form: React.FC = () => {
                   What are your hobbies and interests?
                 </Heading>
               </Flex>
+              <Text
+                id="interests-help"
+                fontSize="smaller"
+                color={
+                  colorMode === "light" ? "customGray.500" : "customGray.400"
+                }
+                mb={4}
+                fontWeight={"semibold"}
+              >
+                Add interests one at a time. These help us understand your
+                personality and passions.
+              </Text>
               <HStack mb={4}>
                 <Input
                   value={currentInterest}
@@ -405,17 +419,7 @@ const Form: React.FC = () => {
                   Add
                 </Button>
               </HStack>
-              <Text
-                id="interests-help"
-                fontSize="sm"
-                color={
-                  colorMode === "light" ? "customGray.500" : "customGray.400"
-                }
-                mb={3}
-              >
-                Add interests one at a time. These help us understand your
-                personality and passions.
-              </Text>
+
               <Flex
                 wrap="wrap"
                 gap={2}
@@ -462,7 +466,7 @@ const Form: React.FC = () => {
               role="group"
               aria-label="Career goals section"
             >
-              <Flex align="center" mb={6} gap={3}>
+              <Flex align="center" mb={4} gap={3}>
                 <Icon
                   as={TrendingUp}
                   w={6}
@@ -481,6 +485,17 @@ const Form: React.FC = () => {
                   Any specific career goals or dreams?
                 </Heading>
               </Flex>
+              <Text
+                id="goals-help"
+                fontSize="smaller"
+                color={
+                  colorMode === "light" ? "customGray.500" : "customGray.400"
+                }
+                mb={4}
+                fontWeight={"semibold"}
+              >
+                Share any career aspirations or dreams you have.
+              </Text>
               <Textarea
                 value={formData.goals}
                 onChange={(e) =>
@@ -508,16 +523,6 @@ const Form: React.FC = () => {
                 aria-describedby="goals-help"
                 required
               />
-              <Text
-                id="goals-help"
-                fontSize="sm"
-                color={
-                  colorMode === "light" ? "customGray.500" : "customGray.400"
-                }
-                mt={2}
-              >
-                Optional: Share any career aspirations or dreams you have.
-              </Text>
             </Box>
 
             {/* Life Goals Input */}
@@ -534,7 +539,7 @@ const Form: React.FC = () => {
               role="group"
               aria-label="Life goals and values section"
             >
-              <Flex align="center" mb={6} gap={3}>
+              <Flex align="center" mb={4} gap={3}>
                 <Icon
                   as={Users}
                   w={6}
@@ -553,6 +558,18 @@ const Form: React.FC = () => {
                   What are your life goals and values?
                 </Heading>
               </Flex>
+              <Text
+                id="life-goals-help"
+                fontSize="smaller"
+                color={
+                  colorMode === "light" ? "customGray.500" : "customGray.400"
+                }
+                mb={4}
+                fontWeight={"semibold"}
+              >
+                Share your personal values and what matters most to you in life
+                beyond career.
+              </Text>
               <Textarea
                 value={formData.lifeGoals}
                 onChange={(e) =>
@@ -583,17 +600,6 @@ const Form: React.FC = () => {
                 aria-describedby="life-goals-help"
                 required
               />
-              <Text
-                id="life-goals-help"
-                fontSize="sm"
-                color={
-                  colorMode === "light" ? "customGray.500" : "customGray.400"
-                }
-                mt={2}
-              >
-                Optional: Share your personal values and what matters most to
-                you in life beyond career.
-              </Text>
             </Box>
 
             <Button

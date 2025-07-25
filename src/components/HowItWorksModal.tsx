@@ -40,14 +40,13 @@ const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
       title: "AI Analysis",
       description:
         "Our intelligent system analyses your background to identify your unique strengths and transferable skills.",
-      details:
-        "We match your profile against thousands of career paths and success stories.",
+      details: "We match your profile against thousands of career paths.",
     },
     {
       icon: Target,
       title: "Discover Career Paths",
       description:
-        "Get 3 personalised career recommendations with detailed descriptions and why they're perfect for you.",
+        "Get 5 personalised career recommendations with detailed descriptions and why they're perfect for you.",
       details: "Each path includes specific next steps and actionable advice.",
     },
     {
@@ -205,8 +204,8 @@ const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
                       <Flex justify="center" my={3}>
                         <Icon
                           as={ArrowRight}
-                          w={4}
-                          h={4}
+                          w={6}
+                          h={6}
                           color={
                             colorMode === "light"
                               ? "customGray.400"
